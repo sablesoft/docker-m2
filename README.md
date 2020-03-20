@@ -11,7 +11,7 @@
 7. `docker-compose up --build -d`
 8. `sleep 60`
 9. `docker exec -it app bin/install`
-10. `sudo chown -R ``whoami``:``whoami`` web/magento && echo "...almost done always..."`
+10. `sudo chown -R ```whoami```:```whoami``` web/magento && echo "...almost done always..."`
 
 ## Setup XSD Paths
 
