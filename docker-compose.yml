@@ -13,11 +13,11 @@ services:
       - ./web/logs:/var/log/nginx
       - ./docker/nginx:/var/www/html/conf/nginx
       - ./docker/php/20-xdebug.ini:/usr/local/etc/php/conf.d/zz-docker-php-ext-xdebug.ini
-      - ./docker/php/docker-zz.ini:/usr/local/etc/php/conf.d/docker-zz.ini
+      - ./docker/php/docker-zz.ini:/usr/local/etc/php/conf.d/zz-docker.ini
     env_file:
       - .env
     environment:
-      XDEBUG_CONFIG: "remote_host=192.168.228.1 remote_enable=1"
+      XDEBUG_CONFIG: "remote_host=192.168.228.1"
     networks:
       - internal
 
