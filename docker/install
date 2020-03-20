@@ -1,0 +1,7 @@
+#!/bin/bash
+
+bin/magento setup:install --base-url=http://${MAGE_HOST}/ --backend-frontname=${MAGE_BACKEND} \
+--db-host=${MYSQL_HOST} --db-name=${MYSQL_DATABASE} --db-user=${MYSQL_USER} --db-password=${MYSQL_PASSWORD} \
+--admin-firstname=Magento --admin-lastname=Admin --admin-email=${MAGE_EMAIL} \
+--admin-user=${MAGE_LOGIN} --admin-password=${MAGE_PASSWORD} --language=${MAGE_LANGUAGE} \
+--currency=${MAGE_CURRENCY} --timezone=${MAGE_TIMEZONE} --use-rewrites=1 -vvv;

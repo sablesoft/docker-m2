@@ -1,0 +1,48 @@
+version: '3'
+services:
+
+  magento:
+    build: docker
+    container_name: app
+    working_dir: /var/www/html/magento
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - ./web:/var/www/html
+      - ./web/logs:/var/log/nginx
+      - ./docker/nginx:/var/www/html/conf/nginx
+      - ./docker/php/20-xdebug.ini:/usr/local/etc/php/conf.d/zz-docker-php-ext-xdebug.ini
+      - ./docker/php/docker-zz.ini:/usr/local/etc/php/conf.d/docker-zz.ini
+    env_file:
+      - .env
+    environment:
+      XDEBUG_CONFIG: "remote_host=192.168.228.1 remote_enable=1"
+    networks:
+      - internal
+
+  # dev mysql db:
+  db:
+    image: mysql:5.7
+    container_name: db
+    working_dir: /dump
+    volumes:
+      - ./docker/dump:/dump
+      - ./web/logs:/var/log/mysql:rw
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    networks:
+      - internal
+
+volumes:
+  db:
+
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.228.0/28
