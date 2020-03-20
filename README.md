@@ -16,6 +16,6 @@
 ## Setup XSD Paths
 
 1. `docker exec -it app bin/magento dev:urn-catalog:generate ../misc.xml`
-2. `chown `\``whoami`\``:`\``whoami`\`` web/misc.xml`
+2. `sudo chown `\``whoami`\``:`\``whoami`\`` web/misc.xml`
 3. `sed -i 's/\$PROJECT_DIR\$/\$PROJECT_DIR\$\/web\/magento/g' web/misc.xml`
 2. `cp web/misc.xml .idea/misc.xml`
